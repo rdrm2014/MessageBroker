@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>MessageBroker</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" type="text/css">
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/cayman.css">
+    <link rel="stylesheet" href="../css/prism.css">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">MessageBroker</h1>
+      <h2 class="project-tagline">Message Broker - Node.js</h2><a href="https://npmjs.com/package/MessageBroker" target="_blank" class="btn">View on npm</a>
+    </section>
+    <section data-spy="scroll" data-target=".scrollspy" class="main-content">
+      <div class="row">
+        <div class="col-md-3 bs-docs-sidebar">
+          <ul id="sidebar" class="nav nav-stacked fixed">
+            <li><a href="../../index.html">Main</a></li>
+            <li><a href="../../app_Server.js.html">app_Server.js</a></li>
+            <li><a href="../../config/myConfig.js.html">config/myConfig.js</a></li>
+            <li><a href="../../mqtt/base.js.html">mqtt/base.js</a></li>
+            <li><a href="../../routes/routes.js.html">routes/routes.js</a></li>
+            <li class="active"><a href="../../services/services.js.html">services/services.js
+                <ul class="nav nav-stacked">
+                  <li><a href="#config"><i class="alert alert-success"></i><span>config</span></a>
+                  </li>
+                  <li><a href="#convertJSONtoXML"><i class="alert alert-info"></i><span>convertJSONtoXML</span></a>
+                  </li>
+                  <li><a href="#convertJSONtoDRL"><i class="alert alert-info"></i><span>convertJSONtoDRL</span></a>
+                  </li>
+                  <li><a href="#convertXMLtoJSON"><i class="alert alert-info"></i><span>convertXMLtoJSON</span></a>
+                  </li>
+                  <li><a href="#convertXMLtoDRL"><i class="alert alert-info"></i><span>convertXMLtoDRL</span></a>
+                  </li>
+                  <li><a href="#convertDRLtoXML"><i class="alert alert-info"></i><span>convertDRLtoXML</span></a>
+                  </li>
+                  <li><a href="#convertDRLtoJSON"><i class="alert alert-info"></i><span>convertDRLtoJSON</span></a>
+                  </li>
+                </ul></a></li>
+            <li><a href="../../sockets/base.js.html">sockets/base.js</a></li>
+          </ul>
+        </div>
+        <div class="col-md-9">
+          <section id="config">
+            <h1>config</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-success radius ctx-type">declaration</div><span>&nbsp;</span><span>config</span><span>&nbsp;</span>
+            </p>
+          </section>
+          <div class="description"><p>Created by ricardomendes on 06/10/15.</p></div>
+          <pre><code class="language-javascript">var config = require('../config/myConfig.js');</code></pre>
+          <section id="convertJSONtoXML">
+            <h1>convertJSONtoXML</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">method</div><span>&nbsp;</span><span>exports.convertJSONtoXML()</span><span>&nbsp;</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>from</td>
+                <td>JSON</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>return</td>
+                <td>XML</td>
+                <td><p>to</p></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Convert JSON to XML</p></div>
+          <pre><code class="language-javascript">exports.convertJSONtoXML = function (from) {
+    return '&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt; &lt;package name=&quot;com.sample&quot; xmlns=&quot;http://drools.org/drools-5.2&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xs:schemaLocation=&quot;http://drools.org/drools-5.2 drools.org/drools-5.2.xsd&quot;&gt;' +
+        '&lt;import name=&quot;com.sample.DroolsTest.Message&quot; /&gt;' +
+        '&lt;rule name=&quot;Hello World&quot;&gt;' +
+        '&lt;lhs&gt;&lt;pattern identifier=&quot;m&quot; object-type=&quot;Message&quot; &gt;' +
+        '&lt;expr&gt;' +
+        'status == Message.HELLO' +
+        '&lt;/expr&gt;' +
+        '&lt;expr&gt;' +
+        'myMessage : message' +
+        '&lt;/expr&gt;' +
+        '&lt;/pattern&gt;' +
+        '&lt;/lhs&gt;&lt;rhs&gt;System.out.println( myMessage );' +
+        'm.setMessage( &quot;Goodbye cruel world&quot; );' +
+        'm.setStatus( Message.GOODBYE );' +
+        'update( m );' +
+        '&lt;/rhs&gt;' +
+        '&lt;/rule&gt;&lt;rule name=&quot;GoodBye&quot;&gt;' +
+        '&lt;lhs&gt;&lt;pattern object-type=&quot;Message&quot; &gt;' +
+        '&lt;expr&gt;' +
+        'status == Message.GOODBYE' +
+        '&lt;/expr&gt;' +
+        '&lt;expr&gt;' +
+        'myMessage : message' +
+        '&lt;/expr&gt;' +
+        '&lt;/pattern&gt;' +
+        '&lt;/lhs&gt;&lt;rhs&gt;System.out.println( myMessage );' +
+        '&lt;/rhs&gt;' +
+        '&lt;/rule&gt;' +
+        '&lt;/package&gt;';
+};</code></pre>
+          <section id="convertJSONtoDRL">
+            <h1>convertJSONtoDRL</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">method</div><span>&nbsp;</span><span>exports.convertJSONtoDRL()</span><span>&nbsp;</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>from</td>
+                <td>JSON</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>return</td>
+                <td>DRL</td>
+                <td><p>to</p></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Convert JSON to DRL</p></div>
+          <pre><code class="language-javascript">exports.convertJSONtoDRL = function (from) {
+    return 'package com.sample\n' +
+        'import com.sample.DroolsTest.Message;\n' +
+        'rule &quot;Hello World&quot;\n' +
+        'when\n' +
+        'm : Message( status == Message.HELLO, myMessage : message )\n' +
+        'then\n' +
+        'System.out.println( myMessage );\n' +
+        'm.setMessage( &quot;Goodbye cruel world&quot; );\n' +
+        'm.setStatus( Message.GOODBYE );\n' +
+        'update( m );\n' +
+        'end\n' +
+        'rule &quot;GoodBye&quot;\n' +
+        'when\n' +
+        'Message( status == Message.GOODBYE, myMessage : message )\n' +
+        'then\n' +
+        'System.out.println( myMessage );\n' +
+        'end';
+};</code></pre>
+          <section id="convertXMLtoJSON">
+            <h1>convertXMLtoJSON</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">method</div><span>&nbsp;</span><span>exports.convertXMLtoJSON()</span><span>&nbsp;</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>from</td>
+                <td>XML</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>return</td>
+                <td>JSON</td>
+                <td><p>to</p></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Convert XML to JSON</p></div>
+          <pre><code class="language-javascript">exports.convertXMLtoJSON = function (from) {
+    return [{
+        &quot;id&quot;: &quot;f41ae407.7dcf88&quot;,
+        &quot;type&quot;: &quot;inject&quot;,
+        &quot;name&quot;: &quot;AAAAAAA&quot;,
+        &quot;topic&quot;: &quot;&quot;,
+        &quot;payload&quot;: &quot;&quot;,
+        &quot;payloadType&quot;: &quot;date&quot;,
+        &quot;repeat&quot;: &quot;&quot;,
+        &quot;crontab&quot;: &quot;&quot;,
+        &quot;once&quot;: false,
+        &quot;x&quot;: 171,
+        &quot;y&quot;: 73,
+        &quot;z&quot;: &quot;7451ae03.b8f48&quot;,
+        &quot;wires&quot;: [[&quot;fc79caa1.b4349&quot;]]
+    }, {
+        &quot;id&quot;: &quot;fc79caa1.b4349&quot;,
+        &quot;type&quot;: &quot;function&quot;,
+        &quot;name&quot;: &quot;&quot;,
+        &quot;func&quot;: &quot;TESTE\nreturn msg;&quot;,
+        &quot;outputs&quot;: 1,
+        &quot;noerr&quot;: 0,
+        &quot;x&quot;: 354,
+        &quot;y&quot;: 118,
+        &quot;z&quot;: &quot;7451ae03.b8f48&quot;,
+        &quot;wires&quot;: [[&quot;5c3ab542.ebbf24&quot;]]
+    }, {
+        &quot;id&quot;: &quot;5c3ab542.ebbf24&quot;,
+        &quot;type&quot;: &quot;debug&quot;,
+        &quot;name&quot;: &quot;XXXXXXX&quot;,
+        &quot;active&quot;: true,
+        &quot;console&quot;: &quot;false&quot;,
+        &quot;complete&quot;: &quot;payload&quot;,
+        &quot;x&quot;: 575,
+        &quot;y&quot;: 196,
+        &quot;z&quot;: &quot;7451ae03.b8f48&quot;,
+        &quot;wires&quot;: []
+    }, {
+        &quot;id&quot;: &quot;aa6a532f.edd7b&quot;,
+        &quot;type&quot;: &quot;inject&quot;,
+        &quot;name&quot;: &quot;CCCCCC&quot;,
+        &quot;topic&quot;: &quot;&quot;,
+        &quot;payload&quot;: &quot;&quot;,
+        &quot;payloadType&quot;: &quot;date&quot;,
+        &quot;repeat&quot;: &quot;&quot;,
+        &quot;crontab&quot;: &quot;&quot;,
+        &quot;once&quot;: false,
+        &quot;x&quot;: 163,
+        &quot;y&quot;: 235,
+        &quot;z&quot;: &quot;7451ae03.b8f48&quot;,
+        &quot;wires&quot;: [[&quot;1b6e20b0.e270e7&quot;]]
+    }, {
+        &quot;id&quot;: &quot;1b6e20b0.e270e7&quot;,
+        &quot;type&quot;: &quot;function&quot;,
+        &quot;name&quot;: &quot;&quot;,
+        &quot;func&quot;: &quot;TESTE\nreturn msg;&quot;,
+        &quot;outputs&quot;: 1,
+        &quot;noerr&quot;: 0,
+        &quot;x&quot;: 363,
+        &quot;y&quot;: 280,
+        &quot;z&quot;: &quot;7451ae03.b8f48&quot;,
+        &quot;wires&quot;: [[&quot;5c3ab542.ebbf24&quot;]]
+    }, {
+        &quot;id&quot;: &quot;8946af04.002f08&quot;,
+        &quot;type&quot;: &quot;inject&quot;,
+        &quot;name&quot;: &quot;BBBBBBB&quot;,
+        &quot;topic&quot;: &quot;&quot;,
+        &quot;payload&quot;: &quot;&quot;,
+        &quot;payloadType&quot;: &quot;date&quot;,
+        &quot;repeat&quot;: &quot;&quot;,
+        &quot;crontab&quot;: &quot;&quot;,
+        &quot;once&quot;: false,
+        &quot;x&quot;: 168,
+        &quot;y&quot;: 142,
+        &quot;z&quot;: &quot;7451ae03.b8f48&quot;,
+        &quot;wires&quot;: [[&quot;fc79caa1.b4349&quot;]]
+    }, {
+        &quot;id&quot;: &quot;dafe7ad3.5ce928&quot;,
+        &quot;type&quot;: &quot;inject&quot;,
+        &quot;name&quot;: &quot;DDDDDD&quot;,
+        &quot;topic&quot;: &quot;&quot;,
+        &quot;payload&quot;: &quot;&quot;,
+        &quot;payloadType&quot;: &quot;date&quot;,
+        &quot;repeat&quot;: &quot;&quot;,
+        &quot;crontab&quot;: &quot;&quot;,
+        &quot;once&quot;: false,
+        &quot;x&quot;: 167,
+        &quot;y&quot;: 326,
+        &quot;z&quot;: &quot;7451ae03.b8f48&quot;,
+        &quot;wires&quot;: [[&quot;1b6e20b0.e270e7&quot;]]
+    }];
+};</code></pre>
+          <section id="convertXMLtoDRL">
+            <h1>convertXMLtoDRL</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">method</div><span>&nbsp;</span><span>exports.convertXMLtoDRL()</span><span>&nbsp;</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>name</td>
+                <td>string, [object Object]</td>
+                <td><p>Name or person object</p></td>
+              </tr>
+              <tr>
+                <td>options</td>
+                <td>[object Object]</td>
+                <td><p>An options object</p></td>
+              </tr>
+              <tr>
+                <td>return</td>
+                <td>string</td>
+                <td><p>The constructed information string</p></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Generates a person information string based on input.</p></div>
+          <pre><code class="language-javascript">exports.convertXMLtoDRL = function (from) {
+    return 'package com.sample\n' +
+        'import com.sample.DroolsTest.Message;\n' +
+        'rule &quot;Hello World&quot;\n' +
+        'when\n' +
+        'm : Message( status == Message.HELLO, myMessage : message )\n' +
+        'then\n' +
+        'System.out.println( myMessage );\n' +
+        'm.setMessage( &quot;Goodbye cruel world&quot; );\n' +
+        'm.setStatus( Message.GOODBYE );\n' +
+        'update( m );\n' +
+        'end\n' +
+        'rule &quot;GoodBye&quot;\n' +
+        'when\n' +
+        'Message( status == Message.GOODBYE, myMessage : message )\n' +
+        'then\n' +
+        'System.out.println( myMessage );\n' +
+        'end';
+};</code></pre>
+          <section id="convertDRLtoXML">
+            <h1>convertDRLtoXML</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">method</div><span>&nbsp;</span><span>exports.convertDRLtoXML()</span><span>&nbsp;</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>from</td>
+                <td>DRL</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>return</td>
+                <td>XML</td>
+                <td><p>to</p></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Convert DRL to XML</p></div>
+          <pre><code class="language-javascript">exports.convertDRLtoXML = function (from) {
+    return '&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;' +
+        '&lt;package name=&quot;com.sample&quot; xmlns=&quot;http://drools.org/drools-5.2&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xs:schemaLocation=&quot;http://drools.org/drools-5.2 drools.org/drools-5.2.xsd&quot;&gt;' +
+        '&lt;import name=&quot;com.sample.DroolsTest.Message&quot; /&gt;' +
+        '&lt;rule name=&quot;Hello World&quot;&gt;' +
+        '&lt;lhs&gt;&lt;pattern identifier=&quot;m&quot; object-type=&quot;Message&quot; &gt;' +
+        '&lt;expr&gt;' +
+        'status == Message.HELLO' +
+        '&lt;/expr&gt;' +
+        '&lt;expr&gt;' +
+        'myMessage : message' +
+        '&lt;/expr&gt;' +
+        '&lt;/pattern&gt;' +
+        '&lt;/lhs&gt;&lt;rhs&gt;System.out.println( myMessage );' +
+        'm.setMessage( &quot;Goodbye cruel world&quot; );' +
+        'm.setStatus( Message.GOODBYE );' +
+        'update( m );' +
+        '&lt;/rhs&gt;' +
+        '&lt;/rule&gt;&lt;rule name=&quot;GoodBye&quot;&gt;' +
+        '&lt;lhs&gt;&lt;pattern object-type=&quot;Message&quot; &gt;' +
+        '&lt;expr&gt;' +
+        'status == Message.GOODBYE' +
+        '&lt;/expr&gt;' +
+        '&lt;expr&gt;' +
+        'myMessage : message' +
+        '&lt;/expr&gt;' +
+        '&lt;/pattern&gt;' +
+        '&lt;/lhs&gt;&lt;rhs&gt;System.out.println( myMessage );' +
+        '&lt;/rhs&gt;' +
+        '&lt;/rule&gt;' +
+        '&lt;/package&gt;';
+};</code></pre>
+          <section id="convertDRLtoJSON">
+            <h1>convertDRLtoJSON</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">method</div><span>&nbsp;</span><span>exports.convertDRLtoJSON()</span><span>&nbsp;</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>from</td>
+                <td>DRL</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>return</td>
+                <td>JSON</td>
+                <td><p>to</p></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Convert DRL to JSON</p></div>
+          <pre><code class="language-javascript">exports.convertDRLtoJSON = function (from) {
+    return [{
+        &quot;id&quot;: &quot;f41ae407.7dcf88&quot;,
+        &quot;type&quot;: &quot;inject&quot;,
+        &quot;name&quot;: &quot;AAAAAAA&quot;,
+        &quot;topic&quot;: &quot;&quot;,
+        &quot;payload&quot;: &quot;&quot;,
+        &quot;payloadType&quot;: &quot;date&quot;,
+        &quot;repeat&quot;: &quot;&quot;,
+        &quot;crontab&quot;: &quot;&quot;,
+        &quot;once&quot;: false,
+        &quot;x&quot;: 171,
+        &quot;y&quot;: 73,
+        &quot;z&quot;: &quot;7451ae03.b8f48&quot;,
+        &quot;wires&quot;: [[&quot;fc79caa1.b4349&quot;]]
+    }, {
+        &quot;id&quot;: &quot;fc79caa1.b4349&quot;,
+        &quot;type&quot;: &quot;function&quot;,
+        &quot;name&quot;: &quot;&quot;,
+        &quot;func&quot;: &quot;TESTE\nreturn msg;&quot;,
+        &quot;outputs&quot;: 1,
+        &quot;noerr&quot;: 0,
+        &quot;x&quot;: 354,
+        &quot;y&quot;: 118,
+        &quot;z&quot;: &quot;7451ae03.b8f48&quot;,
+        &quot;wires&quot;: [[&quot;5c3ab542.ebbf24&quot;]]
+    }, {
+        &quot;id&quot;: &quot;5c3ab542.ebbf24&quot;,
+        &quot;type&quot;: &quot;debug&quot;,
+        &quot;name&quot;: &quot;XXXXXXX&quot;,
+        &quot;active&quot;: true,
+        &quot;console&quot;: &quot;false&quot;,
+        &quot;complete&quot;: &quot;payload&quot;,
+        &quot;x&quot;: 575,
+        &quot;y&quot;: 196,
+        &quot;z&quot;: &quot;7451ae03.b8f48&quot;,
+        &quot;wires&quot;: []
+    }, {
+        &quot;id&quot;: &quot;aa6a532f.edd7b&quot;,
+        &quot;type&quot;: &quot;inject&quot;,
+        &quot;name&quot;: &quot;CCCCCC&quot;,
+        &quot;topic&quot;: &quot;&quot;,
+        &quot;payload&quot;: &quot;&quot;,
+        &quot;payloadType&quot;: &quot;date&quot;,
+        &quot;repeat&quot;: &quot;&quot;,
+        &quot;crontab&quot;: &quot;&quot;,
+        &quot;once&quot;: false,
+        &quot;x&quot;: 163,
+        &quot;y&quot;: 235,
+        &quot;z&quot;: &quot;7451ae03.b8f48&quot;,
+        &quot;wires&quot;: [[&quot;1b6e20b0.e270e7&quot;]]
+    }, {
+        &quot;id&quot;: &quot;1b6e20b0.e270e7&quot;,
+        &quot;type&quot;: &quot;function&quot;,
+        &quot;name&quot;: &quot;&quot;,
+        &quot;func&quot;: &quot;TESTE\nreturn msg;&quot;,
+        &quot;outputs&quot;: 1,
+        &quot;noerr&quot;: 0,
+        &quot;x&quot;: 363,
+        &quot;y&quot;: 280,
+        &quot;z&quot;: &quot;7451ae03.b8f48&quot;,
+        &quot;wires&quot;: [[&quot;5c3ab542.ebbf24&quot;]]
+    }, {
+        &quot;id&quot;: &quot;8946af04.002f08&quot;,
+        &quot;type&quot;: &quot;inject&quot;,
+        &quot;name&quot;: &quot;BBBBBBB&quot;,
+        &quot;topic&quot;: &quot;&quot;,
+        &quot;payload&quot;: &quot;&quot;,
+        &quot;payloadType&quot;: &quot;date&quot;,
+        &quot;repeat&quot;: &quot;&quot;,
+        &quot;crontab&quot;: &quot;&quot;,
+        &quot;once&quot;: false,
+        &quot;x&quot;: 168,
+        &quot;y&quot;: 142,
+        &quot;z&quot;: &quot;7451ae03.b8f48&quot;,
+        &quot;wires&quot;: [[&quot;fc79caa1.b4349&quot;]]
+    }, {
+        &quot;id&quot;: &quot;dafe7ad3.5ce928&quot;,
+        &quot;type&quot;: &quot;inject&quot;,
+        &quot;name&quot;: &quot;DDDDDD&quot;,
+        &quot;topic&quot;: &quot;&quot;,
+        &quot;payload&quot;: &quot;&quot;,
+        &quot;payloadType&quot;: &quot;date&quot;,
+        &quot;repeat&quot;: &quot;&quot;,
+        &quot;crontab&quot;: &quot;&quot;,
+        &quot;once&quot;: false,
+        &quot;x&quot;: 167,
+        &quot;y&quot;: 326,
+        &quot;z&quot;: &quot;7451ae03.b8f48&quot;,
+        &quot;wires&quot;: [[&quot;1b6e20b0.e270e7&quot;]]
+    }];
+};</code></pre>
+          <div class="footer site-footer">
+            <div class="span site-footer-owner"><a href="https://github.com/iwatakeshi/doxx-theme-cayman">Cayman</a> is maintained by <a href="https://github.com/iwatakeshi">iwatakeshi</a>.</div>
+            <div class="span site-footer-credits">This page was generated by <a href="https://github.com/FGRibreau/doxx">Doxx</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/affix.js"></script>
+    <script src="../js/dropdown.js"></script>
+    <script src="../js/scrollspy.js"></script>
+    <script src="../js/prism.js"></script>
+    <script src="../js/prism-bash.js"></script>
+    <script>
+      $(document).ready(function(){
+        $('body').scrollspy({
+          target: ".bs-docs-sidebar",
+          offset: 40
+        }) 
+      });
+    </script>
+  </body>
+</html>
