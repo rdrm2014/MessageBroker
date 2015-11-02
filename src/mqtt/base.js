@@ -15,7 +15,7 @@ module.exports = function (client) {
      */
     client.on('message', function(topic, dataJSON) {
         var json = JSON.parse(dataJSON);
-        client.publish('rulesXML', JSON.stringify(services.convertNodeRedtoXML(json)));
-        client.publish('rulesDRL', JSON.stringify(services.convertNodeRedtoDRL(json)));
+        client.publish('MessageBroker_RuleXML', JSON.stringify(services.convertNodeRedtoXML(json)));
+        client.publish('MessageBroker_RuleDRL', JSON.stringify(services.convertNodeRedtoDRL(json)));
     });
 };
