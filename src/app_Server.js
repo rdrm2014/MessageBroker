@@ -31,7 +31,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', routes.index);
 app.get('/about', routes.about);
-app.get('/api/convert', routes.api.convert);
+app.get('/api/convertNodeRedtoXML', routes.api.convertNodeRedtoXML);
+app.get('/api/convertNodeRedtoDRL', routes.api.convertNodeRedtoDRL);
 
 server.listen(app.get("port"), app.get("ipaddr"), function() {
     console.log("Server up and running. Go to http://" + app.get("ipaddr") + ":" + app.get("port"));

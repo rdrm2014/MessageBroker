@@ -17,5 +17,4 @@ module.exports.myconfig = {
         "ipaddr": "127.0.0.1",
         "port": 8080
     }
-    //scriptMotor: '/Users/ricardomendes/teste'
 };
