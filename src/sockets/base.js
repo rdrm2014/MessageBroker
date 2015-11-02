@@ -1,6 +1,8 @@
 /**
  * Created by ricardomendes on 06/10/15.
  */
+var services = require('../services/services.js');
+
 module.exports = function (io) {
     'use strict';
 
@@ -15,14 +17,23 @@ module.exports = function (io) {
         });
 
         /**
-         * Convert data
-         * @param      {Object}   from
-         * @param      {String}   typeFrom
-         * @param      {String}   typeTo
-         * @return     {object} converted data
+         * Convert NodeRed to XML
+         * @param      {Object}   dataJSON
+         * @return     {object} converted data XML
          */
-        socket.on('sendConvert', function (from, typeFrom, typeTo) {
-            io.sockets.in(socket.room).emit('updateConvert', {from: from, typeFrom:typeFrom, typeTo:typeTo, newData: from});
+        socket.on('convertNodeRedtoXML', function (dataJSON) {
+            var json = JSON.parse(dataJSON);
+            io.sockets.in(socket.room).emit('updateConvertXML', services.convertNodeRedtoXML(json));
+        });
+
+        /**
+         * Convert NodeRed to DRL
+         * @param      {Object}   dataJSON
+         * @return     {object} converted data DRL
+         */
+        socket.on('convertNodeRedtoDRL', function (dataJSON) {
+            var json = JSON.parse(dataJSON);
+            io.sockets.in(socket.room).emit('updateConvertDRL', services.convertNodeRedtoDRL(json));
         });
 
         /**
