@@ -14,5 +14,5 @@ if(process.argv.indexOf("-t") != -1){
 client.subscribe(topic);
 
 client.on('message', function(topic, message) {
-    console.log(" %s:'%s'", topic, message);
+    console.log(" %s:%s", topic, message);
 });

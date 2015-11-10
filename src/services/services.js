@@ -3,6 +3,10 @@
  */
 var config = require('../config/myConfig.js');
 
+exports.convert = function () {
+    return {name: 'ruleName', rule: 'xmlString'};
+};
+
 /**
  * Convert JSON NodeRed to XML
  * @param      {JSON}   json
@@ -113,5 +117,5 @@ exports.convertNodeRedtoDRL = function (json) {
         "then\n" + rhs + "\n" +
         "end";
 
-    return {name: ruleName, rule: resultDRL};
+    return {'name': ruleName, 'rule': resultDRL};
 };
