@@ -109,11 +109,13 @@ exports.convert = function () {
         } else{
             graph.addNode(node.id, {name:node.name, type:node.type});
         }
-        if(node.wires[0]){
-            for (var a in node.wires[0]) {
+        if(node.wires) {
+            if (node.wires[0]) {
+                for (var a in node.wires[0]) {
 
-                console.log(node.wires[0][a]);
-                graph.addEdge(node.id + '-&gt;' + node.wires[0][a], node.id, node.wires[0][a]);
+                    console.log(node.wires[0][a]);
+                    graph.addEdge(node.id + '-&gt;' + node.wires[0][a], node.id, node.wires[0][a]);
+                }
             }
         }
     }
@@ -127,9 +129,9 @@ exports.convert = function () {
     console.log(JSON.stringify(node3));
 
     //var name = &quot;Hello World&quot;;
-    var expr1 = node1.data.func;//&quot;status == Message.HELLO&quot;;
-    var expr2 = node3.data.func;//&quot;myMessage : message&quot;;
-    var rhs = node2.data.func;//'System.out.println( myMessage ); m.setMessage( &quot;Goodbye cruel world&quot; ); m.setStatus( Message.GOODBYE ); update( m );';
+    var expr1 = node1.func;//&quot;status == Message.HELLO&quot;;
+    var expr2 = node3.func;//&quot;myMessage : message&quot;;
+    var rhs = node2.func;//'System.out.println( myMessage ); m.setMessage( &quot;Goodbye cruel world&quot; ); m.setStatus( Message.GOODBYE ); update( m );';
 
     var xml = builder.create('package').att('name',&quot;com.sample&quot;).att('xmlns', &quot;http://drools.org/drools-5.2&quot;).att('xmlns:xs', &quot;http://www.w3.org/2001/XMLSchema-instance&quot;).att('xs:schemaLocation', &quot;http://drools.org/drools-5.2 drools.org/drools-5.2.xsd&quot;);
 
@@ -192,11 +194,13 @@ exports.convert = function () {
         } else{
             graph.addNode(node.id, {name:node.name, type:node.type});
         }
-        if(node.wires[0]){
-            for (var a in node.wires[0]) {
+        if(node.wires) {
+            if (node.wires[0]) {
+                for (var a in node.wires[0]) {
 
-                console.log(node.wires[0][a]);
-                graph.addEdge(node.id + '-&gt;' + node.wires[0][a], node.id, node.wires[0][a]);
+                    console.log(node.wires[0][a]);
+                    graph.addEdge(node.id + '-&gt;' + node.wires[0][a], node.id, node.wires[0][a]);
+                }
             }
         }
     }

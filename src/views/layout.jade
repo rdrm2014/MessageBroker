@@ -1,13 +1,13 @@
 doctype html
 html
   head
-    title= config.name
+    title= "Message Broker"
     script(src='/js/jquery-1.11.3.min.js')
     link(rel='stylesheet', href='/bootstrap-3.3.4/css/bootstrap.min.css')
     link(rel='stylesheet', href='/css/style.css')
     meta(name='viewport', content='width=device-width, initial-scale=1')
-    meta(name='description', content=' #{config.description}')
-    meta(name='author', content='#{config.author}')
+    meta(name='description', content='Message Broker - Node.js')
+    meta(name='author', content='Ricardo Mendes')
   body
     div(class='container')
         div(class='header clearfix')
@@ -15,9 +15,9 @@ html
                 ul(class='nav nav-pills pull-right')
                     li(role='presentation')
                         a(href='about') About
-            h3(class='text-muted') #{config.name}
+            h3(class='text-muted') Message Broker
         
         block content
         
         footer(class='footer')            
-            p(style='text-align: center;') #{config.author} & #{config.tecnology} & #{config.version}
+            p(style='text-align: center;') Ricardo Mendes & Node.js & 0.0.1

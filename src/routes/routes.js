@@ -1,7 +1,6 @@
 /**
  * Created by ricardomendes on 06/10/15.
  */
-var config = require('../config/myConfig.js');
 var services = require('../services/services.js');
 
 /**
@@ -10,7 +9,7 @@ var services = require('../services/services.js');
  * @return     {object} render home page
  */
 exports.index = function (req, res) {
-    res.render('index', {config: config.myconfig});
+    res.render('index');
 };
 
 /**
@@ -18,7 +17,7 @@ exports.index = function (req, res) {
  * @return     {object} about page
  */
 exports.about = function (req, res) {
-    res.render('about', {config: config.myconfig});
+    res.render('about');
 };
 
 /**
