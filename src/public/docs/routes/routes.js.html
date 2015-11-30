@@ -2,7 +2,7 @@
 <html lang="en-us">
   <head>
     <meta charset="UTF-8">
-    <title>MessageBroker</title>
+    <title>Transformer</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" type="text/css">
@@ -12,20 +12,20 @@
   </head>
   <body>
     <section class="page-header">
-      <h1 class="project-name">MessageBroker</h1>
-      <h2 class="project-tagline">Message Broker - Node.js</h2><a href="https://npmjs.com/package/MessageBroker" target="_blank" class="btn">View on npm</a>
+      <h1 class="project-name">Transformer</h1>
+      <h2 class="project-tagline">Transformer - Node.js</h2><a href="https://npmjs.com/package/Transformer" target="_blank" class="btn">View on npm</a>
     </section>
     <section data-spy="scroll" data-target=".scrollspy" class="main-content">
       <div class="row">
-        <div class="col-md-3 bs-docs-sidebar">
+        <div class="col-md-3 col-xs-3 bs-docs-sidebar">
           <ul id="sidebar" class="nav nav-stacked fixed">
-            <li><a href="../../index.html">Main</a></li>
-            <li><a href="../../app_Server.js.html">app_Server.js</a></li>
-            <li><a href="../../config/myConfig.js.html">config/myConfig.js</a></li>
-            <li><a href="../../mqtt/base.js.html">mqtt/base.js</a></li>
-            <li class="active"><a href="../../routes/routes.js.html">routes/routes.js
+            <li><a href="../index.html">Main</a></li>
+            <li><a href="../app_Server.js.html">app_Server.js</a></li>
+            <li><a href="../config/config.js.html">config/config.js</a></li>
+            <li><a href="../mqtt/base.js.html">mqtt/base.js</a></li>
+            <li class="active"><a href="../routes/routes.js.html">routes/routes.js
                 <ul class="nav nav-stacked">
-                  <li><a href="#config"><i class="alert alert-success"></i><span>config</span></a>
+                  <li><a href="#services"><i class="alert alert-success"></i><span>services</span></a>
                   </li>
                   <li><a href="#index"><i class="alert alert-info"></i><span>index</span></a>
                   </li>
@@ -33,26 +33,25 @@
                   </li>
                   <li><a href="#api"><i class="alert alert-success"></i><span>api</span></a>
                   </li>
-                  <li><a href="#convert"><i class="alert alert-info"></i><span>convert</span></a>
+                  <li><a href="#convertNodeRedtoXML"><i class="alert alert-info"></i><span>convertNodeRedtoXML</span></a>
                   </li>
-                  <li><a href="#if"><i class="alert alert-info"></i><span>if</span></a>
+                  <li><a href="#convertNodeRedtoDRL"><i class="alert alert-info"></i><span>convertNodeRedtoDRL</span></a>
                   </li>
                 </ul></a></li>
-            <li><a href="../../services/services.js.html">services/services.js</a></li>
-            <li><a href="../../sockets/base.js.html">sockets/base.js</a></li>
+            <li><a href="../services/services.js.html">services/services.js</a></li>
+            <li><a href="../sockets/base.js.html">sockets/base.js</a></li>
           </ul>
         </div>
         <div class="col-md-9">
-          <section id="config">
-            <h1>config</h1>
+          <section id="services">
+            <h1>services</h1>
             <h5 class="subheader"></h5>
             <p>
-              <div class="label label-success radius ctx-type">declaration</div><span>&nbsp;</span><span>config</span><span>&nbsp;</span>
+              <div class="label label-success radius ctx-type">declaration</div><span>&nbsp;</span><span>services</span><span>&nbsp;</span>
             </p>
           </section>
           <div class="description"><p>Created by ricardomendes on 06/10/15.</p></div>
-          <pre><code class="language-javascript">var config = require('../config/myConfig.js');
-var services = require('../services/services.js');</code></pre>
+          <pre><code class="language-javascript">var services = require('../services/services.js');</code></pre>
           <section id="index">
             <h1>index</h1>
             <h5 class="subheader"></h5>
@@ -60,47 +59,9 @@ var services = require('../services/services.js');</code></pre>
               <div class="label label-info radius ctx-type">method</div><span>&nbsp;</span><span>exports.index()</span><span>&nbsp;</span>
             </p>
           </section>
-          <table class="table table-bordered table-striped">
-            <thead>
-              <tr>
-                <th style="width:20%">Option name</th>
-                <th style="width:20%">Type</th>
-                <th>Description</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>req</td>
-                <td>object</td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>res</td>
-                <td>object</td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>return</td>
-                <td>object</td>
-                <td><p>render home page</p></td>
-              </tr>
-            </tbody>
-          </table>
-          <div class="description"><p>GET home page</p><p><em>Examples:</em></p><pre><code>var things = [{
-           &quot;stuff&quot;: {
-             &quot;evenMoreStuff&quot;: {
-               &quot;evenMoreStuff&quot;: null
-             }
-           }
-         }];
-
- // returns [&quot;stuff&quot;]
- simplify(things);
-utils.escape(&#39;&lt;script&gt;&lt;/script&gt;&#39;)
-// =&gt; &#39;&amp;lt;script&amp;gt;&amp;lt;/script&amp;gt;&#39;
-</code></pre></div>
+          <div class="description"><p>GET home page</p></div>
           <pre><code class="language-javascript">exports.index = function (req, res) {
-    res.render('index', {config: config.myconfig});
+    res.render('index');
 };</code></pre>
           <section id="about">
             <h1>about</h1>
@@ -109,35 +70,9 @@ utils.escape(&#39;&lt;script&gt;&lt;/script&gt;&#39;)
               <div class="label label-info radius ctx-type">method</div><span>&nbsp;</span><span>exports.about()</span><span>&nbsp;</span>
             </p>
           </section>
-          <table class="table table-bordered table-striped">
-            <thead>
-              <tr>
-                <th style="width:20%">Option name</th>
-                <th style="width:20%">Type</th>
-                <th>Description</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>req</td>
-                <td>object</td>
-                <td><p>The number for squaring</p></td>
-              </tr>
-              <tr>
-                <td>res</td>
-                <td>object</td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>return</td>
-                <td>object</td>
-                <td><p>about page</p></td>
-              </tr>
-            </tbody>
-          </table>
           <div class="description"><p>GET about page.</p></div>
           <pre><code class="language-javascript">exports.about = function (req, res) {
-    res.render('about', {config: config.myconfig});
+    res.render('about');
 };</code></pre>
           <section id="api">
             <h1>api</h1>
@@ -148,11 +83,11 @@ utils.escape(&#39;&lt;script&gt;&lt;/script&gt;&#39;)
           </section>
           <div class="description"><p>API</p></div>
           <pre><code class="language-javascript">exports.api = {</code></pre>
-          <section id="convert">
-            <h1>convert</h1>
+          <section id="convertNodeRedtoXML">
+            <h1>convertNodeRedtoXML</h1>
             <h5 class="subheader"></h5>
             <p>
-              <div class="label label-info radius ctx-type">method</div><span>&nbsp;</span><span>convert()</span><span>&nbsp;</span>
+              <div class="label label-info radius ctx-type">method</div><span>&nbsp;</span><span>convertNodeRedtoXML()</span><span>&nbsp;</span>
             </p>
           </section>
           <table class="table table-bordered table-striped">
@@ -165,41 +100,27 @@ utils.escape(&#39;&lt;script&gt;&lt;/script&gt;&#39;)
             </thead>
             <tbody>
               <tr>
-                <td>req</td>
-                <td>object</td>
-                <td><p>[from, typeFrom, typeTo]</p></td>
-              </tr>
-              <tr>
-                <td>res</td>
-                <td>object</td>
+                <td>dataJSON</td>
+                <td>Object</td>
                 <td></td>
               </tr>
               <tr>
                 <td>return</td>
                 <td>object</td>
-                <td><p>render result</p></td>
+                <td><p>dados convertidos para XML</p></td>
               </tr>
             </tbody>
           </table>
-          <div class="description"><p>Convert<br />Permite converter ficheiros<br />Tipos de ficheiros disponíveis: [&quot;xml&quot;, &quot;json&quot;, &quot;drl&quot;];</p></div>
-          <pre><code class="language-javascript">convert: function (req, res) {
-    console.log(req.query);
-    var paramObj = {
-        from: req.query['from'],
-        typeFrom: req.query['typeFrom'],
-        typeTo: req.query['typeTo']
-        //typeFrom: req.query['typeFrom'] != &quot;&quot; ? req.query('typeFrom') : &quot;json&quot;,
-        //typeTo: req.query['typeTo'] != &quot;&quot; ? req.query('typeTo') : &quot;xml&quot;
-    };
-
-    var result;
-
-    var listTypes = [&quot;xml&quot;, &quot;json&quot;, &quot;drl&quot;];</code></pre>
-          <section id="if">
-            <h1>if</h1>
+          <div class="description"><p>Converte um diagrama de Node-Red para XML</p></div>
+          <pre><code class="language-javascript">convertNodeRedtoXML: function (req, res){
+    var json = JSON.parse(req.query['json']);
+    res.json(services.convertNodeRedtoXML(json));
+},</code></pre>
+          <section id="convertNodeRedtoDRL">
+            <h1>convertNodeRedtoDRL</h1>
             <h5 class="subheader"></h5>
             <p>
-              <div class="label label-info radius ctx-type">method</div><span>&nbsp;</span><span>if()</span><span>&nbsp;</span>
+              <div class="label label-info radius ctx-type">method</div><span>&nbsp;</span><span>convertNodeRedtoDRL()</span><span>&nbsp;</span>
             </p>
           </section>
           <table class="table table-bordered table-striped">
@@ -212,63 +133,26 @@ utils.escape(&#39;&lt;script&gt;&lt;/script&gt;&#39;)
             </thead>
             <tbody>
               <tr>
-                <td>-</td>
-                <td>Array.&lt;object&gt;</td>
-                <td><p>things</p></td>
+                <td>dataJSON</td>
+                <td>Object</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>return</td>
+                <td>object</td>
+                <td><p>dados convertidos para DRL</p></td>
               </tr>
             </tbody>
           </table>
-          <div class="description"><p>Simplifies things.</p><p><em>Examples:</em></p><pre><code> var things = [{
-   &quot;stuff&quot;: {
-     &quot;evenMoreStuff&quot;: {
-       &quot;evenMoreStuff&quot;: null
-     }
-   }
- }];
-
- // returns [&quot;stuff&quot;]
- simplify(things);
-</code></pre></div>
-          <pre><code class="language-javascript">if (listTypes.indexOf((paramObj.typeFrom).toLowerCase()) &gt; -1 &amp;&amp;
-    listTypes.indexOf(paramObj.typeTo.toLowerCase()) &gt; -1 &amp;&amp;
-    paramObj.typeFrom.toLowerCase() != paramObj.typeTo.toLowerCase()){
-
-    if(paramObj.typeFrom.toLowerCase() ==&quot;xml&quot;){
-        if(paramObj.typeTo.toLowerCase() ==&quot;json&quot;){
-            result = services.convertXMLtoJSON(paramObj.from, paramObj.to);
-        } else if(paramObj.typeTo.toLowerCase() ==&quot;drl&quot;){
-            result = services.convertXMLtoDRL(paramObj.from, paramObj.to);
-        } else {
-            console.log(&quot;Tipo2 Desconhecido&quot;);
-        }
-    } else if(paramObj.typeFrom.toLowerCase() ==&quot;json&quot;){
-        if(paramObj.typeTo.toLowerCase() ==&quot;xml&quot;){
-            result = services.convertJSONtoXML(paramObj.from, paramObj.to);
-        } else if(paramObj.typeTo.toLowerCase() ==&quot;drl&quot;){
-            result = services.convertJSONtoDRL(paramObj.from, paramObj.to);
-        } else {
-            console.log(&quot;Tipo2 Desconhecido&quot;);
-        }
-    } else if(paramObj.typeFrom.toLowerCase() ==&quot;drl&quot;){
-        if(paramObj.typeTo.toLowerCase() ==&quot;xml&quot;){
-            result = services.convertDRLtoXML(paramObj.from, paramObj.to);
-        } else if(paramObj.typeTo.toLowerCase() ==&quot;json&quot;){
-            result = services.convertDRLtoJSON(paramObj.from, paramObj.to);
-        } else {
-            console.log(&quot;Tipo2 Desconhecido&quot;);
-        }
-    } else {
-        console.log(&quot;Tipo Desconhecido&quot;);
-    }
-} else{
-    console.log(&quot;ERROR&quot;);
+          <div class="description"><p>Converte um diagrama de Node-Red para DRL<br />Convert NodeRed to DRL</p></div>
+          <pre><code class="language-javascript">convertNodeRedtoDRL: function (req, res){
+    var json = JSON.parse(req.query['json']);
+    res.json(services.convertNodeRedtoDRL(json));
 }
-res.send(result);
-    }
 };</code></pre>
           <div class="footer site-footer">
-            <div class="span site-footer-owner"><a href="https://github.com/iwatakeshi/doxx-theme-cayman">Cayman</a> is maintained by <a href="https://github.com/iwatakeshi">iwatakeshi</a>.</div>
-            <div class="span site-footer-credits">This page was generated by <a href="https://github.com/FGRibreau/doxx">Doxx</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</div>
+            <div class="span site-footer-owner"><a href="https://github.com/mr-doc/mr-doc-theme-cayman">Cayman</a> is maintained by <a href="https://github.com/iwatakeshi">iwatakeshi</a>.</div>
+            <div class="span site-footer-credits">This page was generated by <a href="https://github.com/mr-doc/mr-doc">Mr. Doc</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</div>
           </div>
         </div>
       </div>
@@ -285,6 +169,12 @@ res.send(result);
         $('body').scrollspy({
           target: ".bs-docs-sidebar",
           offset: 40
+        });
+        $('#sidebar').affix({
+          offset:{
+            bottom:60,
+            top: 60
+          }
         }) 
       });
     </script>

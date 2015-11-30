@@ -1,51 +1,38 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-us">
   <head>
-    <meta name="viewport" content="width=device-width" charset="utf-8">
-    <title>Message Broker</title>
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/cayman.min.css">
-    <link rel="stylesheet" href="../css/prism.min.css">
-    <link rel="stylesheet" href="../css/index.min.css">
-    <link rel="stylesheet" href="../css/docs.min.css">
-    <link rel="stylesheet" href="../css/bootstrap-responsive.min.css">
+    <meta charset="UTF-8">
+    <title>Transformer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" type="text/css">
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/cayman.css">
+    <link rel="stylesheet" href="../css/prism.css">
   </head>
-  <body data-spy="scroll" data-target=".scrollspy">
-    <div class="navbar navbar-inverse navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container"><a class="brand">Mr. Doc</a>
-          <div class="nav-collapse collapse">
-            <ul class="nav pull-right sponsored"></ul>
-          </div>
-        </div>
-      </div>
-    </div>
-    <header id="overview" class="jumbotron subhead">
-      <div class="container">
-        <h1>Message Broker</h1>
-        <p class="lead"></p>
-      </div>
-    </header>
-    <div class="container">
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Transformer</h1>
+      <h2 class="project-tagline">Transformer - Node.js</h2><a href="https://npmjs.com/package/Transformer" target="_blank" class="btn">View on npm</a>
+    </section>
+    <section data-spy="scroll" data-target=".scrollspy" class="main-content">
       <div class="row">
-        <div class="span3 bs-docs-sidebar">
-          <ul class="nav nav-list bs-docs-sidenav affix-top">
+        <div class="col-md-3 col-xs-3 bs-docs-sidebar">
+          <ul id="sidebar" class="nav nav-stacked fixed">
             <li><a href="../index.html">Main</a></li>
             <li><a href="../app_Server.js.html">app_Server.js</a></li>
-            <li><a href="../config/myConfig.js.html">config/myConfig.js</a></li>
+            <li><a href="../config/config.js.html">config/config.js</a></li>
             <li><a href="../mqtt/base.js.html">mqtt/base.js</a></li>
             <li><a href="../routes/routes.js.html">routes/routes.js</a></li>
             <li><a href="../services/services.js.html">services/services.js</a></li>
-            <li class="active"><a href="../sockets/base.js.html">sockets/base.js</a></li>
+            <li class="active"><a href="../sockets/base.js.html">sockets/base.js
+                <ul class="nav nav-stacked">
+                  <li><a href="#services"><i class="alert alert-success"></i><span>services</span></a>
+                  </li>
+                </ul></a></li>
           </ul>
-          <div class="scrollspy">
-            <ul class="nav nav-list bs-docs-sidenav affix-top">
-              <li><a href="#services"><i class="alert alert-success"></i><span>services</span></a>
-              </li>
-            </ul>
-          </div>
         </div>
-        <div class="span9">
+        <div class="col-md-9">
           <section id="services">
             <h1>services</h1>
             <h5 class="subheader"></h5>
@@ -60,7 +47,7 @@ module.exports = function (io) {
     'use strict';
 
     io.sockets.on('connection', function (socket) {</code></pre>
-          <div class="description"><p>Create new Socket</p></div>
+          <div class="description"><p>Cria um novo Socket</p></div>
           <pre><code class="language-javascript">socket.on('add', function () {
     socket.room = &quot;MessageBroker&quot;;
     socket.join(socket.room);
@@ -82,11 +69,11 @@ module.exports = function (io) {
               <tr>
                 <td>return</td>
                 <td>object</td>
-                <td><p>converted data XML</p></td>
+                <td><p>dados convertidos para XML</p></td>
               </tr>
             </tbody>
           </table>
-          <div class="description"><p>Convert NodeRed to XML</p></div>
+          <div class="description"><p>Converte um diagrama de Node-Red para XML</p></div>
           <pre><code class="language-javascript">socket.on('convertNodeRedtoXML', function (dataJSON) {
     var json = JSON.parse(dataJSON);
     io.sockets.in(socket.room).emit('updateConvertXML', services.convertNodeRedtoXML(json));
@@ -108,39 +95,48 @@ module.exports = function (io) {
               <tr>
                 <td>return</td>
                 <td>object</td>
-                <td><p>converted data DRL</p></td>
+                <td><p>dados convertidos para DRL</p></td>
               </tr>
             </tbody>
           </table>
-          <div class="description"><p>Convert NodeRed to DRL</p></div>
+          <div class="description"><p>Converte um diagrama de Node-Red para DRL</p></div>
           <pre><code class="language-javascript">socket.on('convertNodeRedtoDRL', function (dataJSON) {
     var json = JSON.parse(dataJSON);
     io.sockets.in(socket.room).emit('updateConvertDRL', services.convertNodeRedtoDRL(json));
 });</code></pre>
-          <div class="description"><p>Disconnect socket</p></div>
+          <div class="description"><p>Fecha a ligação do Socket</p></div>
           <pre><code class="language-javascript">socket.on('disconnect', function () {
     socket.leave(socket.room);
 });
     });
 };</code></pre>
+          <div class="footer site-footer">
+            <div class="span site-footer-owner"><a href="https://github.com/mr-doc/mr-doc-theme-cayman">Cayman</a> is maintained by <a href="https://github.com/iwatakeshi">iwatakeshi</a>.</div>
+            <div class="span site-footer-credits">This page was generated by <a href="https://github.com/mr-doc/mr-doc">Mr. Doc</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</div>
+          </div>
         </div>
       </div>
-    </div>
-    <footer class="footer">
-      <div class="container">
-        <p>Documentation generated with <a href="https://github.com/mr-doc/mr-doc">Mr. Doc </a> created by <a href="https://twitter.com/FGRibreau" data-show-count="false" class="twitter-follow-button">Francois-Guillaume Ribreau </a></p>
-        <p>Mr. Doc is sponsored by <a href="http://bringr.net/?btt" title="Outil d'analyse des réseaux sociaux" class="bringr">Bringr </a> and <a href="https://redsmin.com/?btt" title="Full Redis GUI" class="redsmin">Redsmin</a></p>
-        <p>Theme borrowed from Twitter Bootstrap</p>
-      </div>
-    </footer>
-    <script src="../js/twitter-widget.min.js"></script>
+    </section>
     <script src="../js/jquery.min.js"></script>
-    <script src="../js/bootstrap-transition.min.js"></script>
-    <script src="../js/bootstrap-scrollspy.min.js"></script>
-    <script src="../js/bootstrap-dropdown.min.js"></script>
-    <script src="../js/bootstrap-collapse.min.js"></script>
-    <script src="../js/bootstrap-affix.min.js"></script>
-    <script src="../js/prism.min.js"></script>
-    <script src="../js/index.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/affix.js"></script>
+    <script src="../js/dropdown.js"></script>
+    <script src="../js/scrollspy.js"></script>
+    <script src="../js/prism.js"></script>
+    <script src="../js/prism-bash.js"></script>
+    <script>
+      $(document).ready(function(){
+        $('body').scrollspy({
+          target: ".bs-docs-sidebar",
+          offset: 40
+        });
+        $('#sidebar').affix({
+          offset:{
+            bottom:60,
+            top: 60
+          }
+        }) 
+      });
+    </script>
   </body>
 </html>
