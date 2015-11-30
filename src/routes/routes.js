@@ -25,9 +25,9 @@ exports.about = function (req, res) {
  */
 exports.api = {
     /**
-     * Convert NodeRed to XML
-     * @param      {Object}   dataJSON
-     * @return     {object} converted data XML
+     * Converte um diagrama de Node-Red para XML
+     * @param      {Object} dataJSON
+     * @return     {object} dados convertidos para XML
      */
     convertNodeRedtoXML: function (req, res){
         var json = JSON.parse(req.query['json']);
@@ -35,9 +35,10 @@ exports.api = {
     },
 
     /**
+     * Converte um diagrama de Node-Red para DRL
      * Convert NodeRed to DRL
-     * @param      {Object}   dataJSON
-     * @return     {object} converted data DRL
+     * @param      {Object} dataJSON
+     * @return     {object} dados convertidos para DRL
      */
     convertNodeRedtoDRL: function (req, res){
         var json = JSON.parse(req.query['json']);

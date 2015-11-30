@@ -1,29 +1,31 @@
-Node.js - Message Broker
+Node.js - Transformer
 ================
 
-
-Getting started
----------------
-
-
-Introduction
+Introdução
 ------------
+
+O serviço Transformer permite transformar fluxos gerados a partir do Node-red em documentos genéricos interpretatos por outros serviços.
+Os documentos em JSON gerados pelo Node-red são transformados em regras em XML e DRL e disponibilizados através de HTTP GET, Web Sockets e MQTT. 
 
 - [Node.js](http://nodejs.org/)
 - [Socket.io](http://socket.io/)
+- [MQTT](https://github.com/mqttjs/MQTT.js)
 
 
-Requirements
+Requisitos
 ------------
+
+Será necessário instalar o node.js, socket.io e mqtt. 
 
 - Node.js :  [http://nodejs.org/](http://nodejs.org/)
 - Socket.io:  [http://socket.io/](http://socket.io/)
+- MQTT:  [https://github.com/mqttjs/MQTT.js](https://github.com/mqttjs/MQTT.js)
 
 
-Init Server
+Iniciar Serviço
 ------------
 
-node app_Server.js
+**node src/app_Server.js**
 
-(If don't work!)
-npm install
+(Se não funcionar instalar todas as dependências!)
+**npm install**

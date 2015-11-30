@@ -6,7 +6,7 @@ exports.convert = function () {
 };
 
 /**
- * Convert JSON NodeRed to XML
+ * Converte um diagrama de Node-Red em JSON para XML
  * @param      {JSON}   json
  * @return     {XML}   xml
  */
@@ -70,7 +70,7 @@ exports.convertNodeRedtoXML = function (json) {
 };
 
 /**
- * Convert JSON NodeRed to DRL
+ * Converte um diagrama de Node-Red em JSON para DRL
  * @param      {JSON}   json
  * @return     {DRL}   drl
  */

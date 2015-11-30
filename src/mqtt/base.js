@@ -9,9 +9,9 @@ module.exports = function (client) {
     client.subscribe("MessageBroker");
 
     /**
-     * Parse data
+     * Converte um diagrama de Node-Red e disponibiliza nos canais MessageBroker_RuleXML (XML) e MessageBroker_RuleDRL (DRL)
      * @param      {Object}   dataJSON
-     * @return     {object} converted data
+     * @return     {object} dados convertidos
      */
     client.on('message', function(topic, dataJSON) {
 

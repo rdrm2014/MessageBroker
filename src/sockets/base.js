@@ -8,8 +8,8 @@ module.exports = function (io) {
 
     io.sockets.on('connection', function (socket) {
         /**
-         * Create new Socket
-         * @return     {object} create new Socket
+         * Cria um novo Socket
+         * @return     {object} cria um novo Socket
          */
         socket.on('add', function () {
             socket.room = "MessageBroker";
@@ -17,9 +17,9 @@ module.exports = function (io) {
         });
 
         /**
-         * Convert NodeRed to XML
+         * Converte um diagrama de Node-Red para XML
          * @param      {Object}   dataJSON
-         * @return     {object} converted data XML
+         * @return     {object} dados convertidos para XML
          */
         socket.on('convertNodeRedtoXML', function (dataJSON) {
             var json = JSON.parse(dataJSON);
@@ -27,9 +27,9 @@ module.exports = function (io) {
         });
 
         /**
-         * Convert NodeRed to DRL
+         * Converte um diagrama de Node-Red para DRL
          * @param      {Object}   dataJSON
-         * @return     {object} converted data DRL
+         * @return     {object} dados convertidos para DRL
          */
         socket.on('convertNodeRedtoDRL', function (dataJSON) {
             var json = JSON.parse(dataJSON);
@@ -37,7 +37,7 @@ module.exports = function (io) {
         });
 
         /**
-         * Disconnect socket
+         * Fecha a ligação do Socket
          */
         socket.on('disconnect', function () {
             socket.leave(socket.room);

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-path='~/GitHub/Nodejs/EngServicos/MessageBroker/testMQTT'
+path='~/GitHub/Nodejs/EngServicos/Transformer/testMQTT'
 
 # ESP8266 - ESP8266_IR
 osascript -e 'tell app "Terminal"

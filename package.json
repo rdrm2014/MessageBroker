@@ -1,10 +1,10 @@
 {
-  "name": "MessageBroker",
-  "description": "Message Broker - Node.js",
+  "name": "Transformer",
+  "description": "Transformer - Node.js",
   "version": "0.0.1",
   "author": "Ricardo Mendes",
   "tecnology": "Node.js",
-  "main": "app.js",
+  "main": "src/app_Server.js",
   "dependencies": {
     "express": "~4.12.3",
     "jade": "~1.9.2",
