@@ -19,6 +19,7 @@ module.exports = function (client) {
             var json = JSON.parse(dataJSON.toString());
             client.publish('MessageBroker_RuleXML', JSON.stringify(services.convertNodeRedtoXML(json)));
             client.publish('MessageBroker_RuleDRL', JSON.stringify(services.convertNodeRedtoDRL(json)));
+            client.publish('rules', JSON.stringify(services.convertNodeRedtoDRL(json)));
         }catch(e){
             console.log("ERROR"); //error in the above string(in this case,yes)!
         }

@@ -15,7 +15,6 @@ exports.convertNodeRedtoXML = function (json) {
     var DirectedGraph = require('graph-json').DG;
 
     var builder = require('xmlbuilder');
-
     try {
         var nodered = json.data;
 
@@ -23,6 +22,7 @@ exports.convertNodeRedtoXML = function (json) {
 
         for (var i in nodered) {
             var node = nodered[i];
+
             if (node.func) {
                 graph.addNode(node.id, {name: node.name, type: node.type, func: node.func});
             } else {
@@ -54,7 +54,9 @@ exports.convertNodeRedtoXML = function (json) {
 
         var xml = builder.create('package').att('name', "com.sample").att('xmlns', "http://drools.org/drools-5.2").att('xmlns:xs', "http://www.w3.org/2001/XMLSchema-instance").att('xs:schemaLocation', "http://drools.org/drools-5.2 drools.org/drools-5.2.xsd");
 
-        xml.ele('import', {'name': "com.sample.DroolsTest.Message"});
+        xml.ele('import', {'name': "com.es.rulesengine.model.Notification"});
+        xml.ele('import', {'name': "com.es.rulesengine.model.Temperature"});
+        xml.ele('import', {'name': "com.es.rulesengine.model.PIRSensor"});
 
         var ruleElem = xml.ele('rule', {'name': ruleName});
         var lhsElem = ruleElem.ele('lhs');
@@ -111,17 +113,19 @@ exports.convertNodeRedtoDRL = function (json) {
     var node3 = graph.getNode(sortedGraph[2]);
 
     //var name = "Hello World";
-    var expr1 = node1.data.func;//"status == Message.HELLO";
+    //var expr1 = node1.data.func;//"status == Message.HELLO";
     var expr2 = node3.data.func;//"myMessage : message";
     var rhs = node2.data.func;//'System.out.println( myMessage ); m.setMessage( "Goodbye cruel world" ); m.setStatus( Message.GOODBYE ); update( m );';
 
-    var resultDRL = "package com.sample" +
-        "import com.sample.DroolsTest.Message;" +
-        "rule " + ruleName +
-        "when" +
-        "m : Message( " + expr1 + "," + expr2 + ")" +
-        "then" + rhs +
+    var resultDRL = "import com.es.rulesengine.model.Notification; " +
+        "import com.es.rulesengine.model.Temperature; " +
+        "import com.es.rulesengine.model.PIRSensor; " +
+        "rule \"" + ruleName + "\" " +
+        "when " +
+        rhs + " " +
+        "then " +
+        expr2 + " " +
         "end";
 
-    return {'name': ruleName, 'rule': resultDRL};
+    return {'ruleName': ruleName, 'rule': resultDRL};
 };
